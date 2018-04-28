@@ -4,6 +4,7 @@
   "description": "Find friends who are compatible with you",
   "main": "index.js",
   "scripts": {
+    "install": "node ./app/setup/install.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -24,6 +25,8 @@
     "express": "^4.16.3",
     "jquery": "^3.3.1",
     "path": "^0.12.7",
-    "popper.js": "^1.14.3"
+    "popper.js": "^1.14.3",
+    "qs": "^6.5.1",
+    "request": "^2.85.0"
   }
 }

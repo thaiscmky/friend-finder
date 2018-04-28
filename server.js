@@ -19,7 +19,6 @@ app.use('/css',express.static(path.join(__dirname, '/app/public/assets/style.css
 app.use('/js',express.static(path.join(__dirname, '/public/assets/script.js')));
 app.use('/css/bootstrap',express.static(path.join(__dirname,'/node_modules/bootstrap/dist/css/bootstrap.css')));
 app.use('/js/bootstrap',express.static(path.join(__dirname,'/node_modules/bootstrap/dist/js/bootstrap.bundle.js')));
-app.use('/data/friends', express.static(path.join(__dirname,'/app/data/friends')));
 
 //Routing
 require("./app/routing/htmlRoutes")(app);

@@ -8,8 +8,9 @@ var apiRoute = function(app, method, uri, callback, args){
 //TODO pass object templates and file name to render
 var htmlRoute = function(app, method, uri, callback, args){
     var params = '';
+    if(uri === null)    app[method]('*', callback);
     if(args !== null && typeof args !== 'undefined') params = args.join('/:');
-    app[method](params ? url.resolve(uri, params) : uri, callback);
+    app[method](params ? '/'+url.resolve(uri, params) : '/'+uri, callback);
 };
 
 module.exports = function(type, app, method, uri, callback, args){

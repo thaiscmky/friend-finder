@@ -1,5 +1,9 @@
 var path = require("path");
+var url = require("url");
 var express = require("express");
+var jquery = require.resolve('jquery');
+global.jQuery = require('jquery');
+global.$ = global.jQuery;
 //documentation available at https://github.com/expressjs/body-parser
 var bodyParser = require('body-parser');
 var app = express();
@@ -9,16 +13,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
 app.use(bodyParser.json());
 
-app.use(express.static(path.join(__dirname,'/app/public')));
 //Static file setup
-app.set('views', path.join(__dirname,'/app/public/views'));
+app.set('views', __dirname + '/app/public/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use(express.static(path.join(__dirname,'/app/public')));
-app.use('/css',express.static(path.join(__dirname, '/app/public/assets/style.css')));
-app.use('/js',express.static(path.join(__dirname, '/public/assets/script.js')));
-app.use('/css/bootstrap',express.static(path.join(__dirname,'/node_modules/bootstrap/dist/css/bootstrap.css')));
-app.use('/js/bootstrap',express.static(path.join(__dirname,'/node_modules/bootstrap/dist/js/bootstrap.bundle.js')));
+app.use(express.static(__dirname + '/app/public'));
+app.use('/css',express.static(__dirname + '/app/public/assets/style.css'));
+
+app.use('/css/bootstrap',express.static(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.css'));
+app.use('/js/bootstrap',express.static(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.bundle.js'));
 
 //Routing
 require("./app/routing/htmlRoutes")(app);

@@ -18,7 +18,7 @@ app.use(express.static(__dirname + '/app/public'));
 app.set('views', __dirname + '/app/public/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use('/css/styles',express.static(__dirname + '/app/public/assets/css/styles.css'));
+app.use('/css',express.static(__dirname + '/app/public/assets/css/styles.css'));
 app.use('/js',express.static(__dirname + '/app/public/assets/js/script.js'));
 app.use('/js/jquery',express.static(jquery));
 app.use('/js/chosen', express.static(require.resolve('chosen-js')));

@@ -14,12 +14,14 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 //Static file setup
+app.use(express.static(__dirname + '/app/public'));
 app.set('views', __dirname + '/app/public/views');
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-app.use(express.static(__dirname + '/app/public'));
-app.use('/css',express.static(__dirname + '/app/public/assets/style.css'));
-
+app.use('/css/styles',express.static(__dirname + '/app/public/assets/css/styles.css'));
+app.use('/js',express.static(__dirname + '/app/public/assets/js/script.js'));
+app.use('/js/jquery',express.static(jquery));
+app.use('/js/chosen', express.static(require.resolve('chosen-js')));
 app.use('/css/bootstrap',express.static(__dirname + '/node_modules/bootstrap/dist/css/bootstrap.css'));
 app.use('/js/bootstrap',express.static(__dirname + '/node_modules/bootstrap/dist/js/bootstrap.bundle.js'));
 
@@ -30,5 +32,5 @@ require("./app/routing/apiRoutes")(app);
 //Server setup
 const PORT = process.env.PORT || 3000;
 app.listen(PORT,function(){
-    console.log("Server connected",PORT);
+    console.log("Server connected at port ",PORT);
 });

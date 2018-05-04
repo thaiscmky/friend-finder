@@ -15,14 +15,14 @@ module.exports = function(app){
     function getMatch(req, res){
         var bestmatch = null;
         var userScore = getTotalSum(req.body);
-        console.log(friends);
+
         //sort by most compatible match to least compatible
         friends.sort(function(a, b){
             var sumA = a['scores'].reduce(addScore);
             var sumB = b['scores'].reduce(addScore);
             return Math.abs(userScore - sumA) - Math.abs(userScore - sumB);
         });
-        
+
         res.json(friends[0]);
     }
 

@@ -16,3 +16,8 @@ button {
     padding: 20px;
     font-size: 200%;
 }
+
+#friendMatch img {
+    float: right;
+    width: 30%;
+}

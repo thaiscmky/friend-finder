@@ -12,9 +12,25 @@
 </head>
 <body>
     <h1>Survey Questions</h1>
-    <% questions.forEach(function(question, index) { %>
+    <form>
+        <fieldset class="form-group" id="user info">
+            <div>
+                <label for="name">Your Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div>
+                <label for="name">Photo Link</label>
+                <input type="url" class="form-control" id="photo" name="photo" required>
+            </div>
+        </fieldset>
+
+        <% questions.forEach(function(question, index) { %>
         <%- include('question.html', {question: question, id: index + 1}); %>
-    <% }); %>
-    <button type="submit"   class="btn btn-primary btn-lg-btn-block" id="submit">Submit</button>
+        <% }); %>
+        <button type="submit"   class="btn btn-primary btn-lg-btn-block" id="submit">Submit</button>
+        <div class="modal fade" id="friendMatch">
+            <% include modal.html %>
+        </div>
+    </form>
 </body>
 </html>

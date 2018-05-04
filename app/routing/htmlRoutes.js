@@ -3,7 +3,8 @@ var QuestionSet = require("../model/question.js");
 module.exports = function(app){
 
     route('html',app,'get', 'survey', getSurvey);
-    route('html',app,'get', null, function(req, res) {res.render('home.html');});
+    //route('html',app,'get', null, function(req, res) {res.render('home.html');});
+    route('html',app,'get', null, function(req, res) {res.redirect('/survey');});
 
     function getSurvey(req, res){
         var questions = new QuestionSet();
